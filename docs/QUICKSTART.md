@@ -5,7 +5,7 @@
 Requires PHP 8.3+ and Composer 2:
 
 ```bash
-git clone https://github.com/fnx-software/lavertia.git
+git clone https://github.com/lavertia/lavertia.git
 cd lavertia
 composer install
 composer test
