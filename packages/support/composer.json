@@ -1,0 +1,23 @@
+{
+  "name": "lavertia/support",
+  "description": "Composable PHP component contracts and safe serialization for Lavertia.",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^8.3",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Lavertia\\Support\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Lavertia\\Support\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5 || ^12.0"
+  }
+}

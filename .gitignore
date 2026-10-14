@@ -1,0 +1,7 @@
+/vendor/
+/node_modules/
+.env
+.phpunit.result.cache
+.phpunit-watcher.yml
+.idea/
+.DS_Store

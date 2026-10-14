@@ -1,0 +1,35 @@
+name: checks
+
+on:
+  push:
+    branches: [main, "feat/**"]
+  pull_request:
+
+jobs:
+  php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          coverage: none
+          tools: composer:v2
+          extensions: mbstring, json
+
+      - name: Validate Composer manifests
+        run: |
+          composer validate --no-check-publish
+          composer validate packages/support/composer.json --no-check-publish
+          composer validate packages/panels/composer.json --no-check-publish
+
+      - name: Install workspace dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Lint PHP files
+        run: find packages -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Run tests
+        run: composer test
