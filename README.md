@@ -12,7 +12,7 @@ Lavertia is a PHP-first composable UI framework inspired by Flutter's Widget com
 | --- | --- | --- |
 | [support](https://github.com/lavertia/support) | PHP component contracts, immutable composition, safe JSON serialization | **Merged to main**; PHP 8.3/8.4 CI green |
 | [panels](https://github.com/lavertia/panels) | Panel/Page routing, Laravel Modular page discovery, Inertia and React/Vue/Svelte adapters | v0.1/v0.2 implementation and [modular discovery #9](https://github.com/lavertia/panels/pull/9) plus [route precedence fix #10](https://github.com/lavertia/panels/pull/10) **merged**; CI green |
-| [playground](https://github.com/lavertia/playground) | Real Laravel 13 React/Vue/Svelte applications | v0.2 [PR #9](https://github.com/lavertia/playground/pull/9) **merged**; three-stack Laravel/Pest, TypeScript, PostgreSQL and builds green. PHP auto-refresh [PR #11](https://github.com/lavertia/playground/pull/11) under review |
+| [playground](https://github.com/lavertia/playground) | Real Laravel 13 React/Vue/Svelte applications | v0.2 [PR #9](https://github.com/lavertia/playground/pull/9) **merged**; three-stack Laravel/Pest, TypeScript, PostgreSQL and builds green. PHP auto-refresh [PR #11](https://github.com/lavertia/playground/pull/11) **merged** |
 | [lavertia-doc](https://github.com/lavertia/lavertia-doc) | Documentation, guides, blog, plugin directory | Site merged to main and deployed through GitHub Pages |
 | [forms](https://github.com/lavertia/forms) | Canonical form components | [PR #2](https://github.com/lavertia/forms/pull/2) **merged**; canonical descriptors available in source |
 | [tables](https://github.com/lavertia/tables) | Canonical table engine | [PR #2](https://github.com/lavertia/tables/pull/2) **merged**; scoped pagination/filtering available in source |
@@ -72,7 +72,7 @@ public function boot(\Lavertia\Panels\PanelRegistry $panels): void
 
 The same Inertia renderer displays module Pages in React, Vue or Svelte. The implementation preserves Panel middleware and route precedence even when module providers boot in different orders. Both ordinary and cached routes were verified using a **real Laravel 13 + InterNACHI/modular** installation ([CI proof](https://github.com/lavertia/panels/actions/runs/39191330039)). See the [integration guide](https://github.com/lavertia/panels/blob/main/docs/MODULAR_LARAVEL.md).
 
-**Scope:** only module-owned Pages are implemented; Filament-style Resources, Widgets registration and navigation remain planned for v0.3. Vite browser refresh on PHP edits is tracked separately in [Playground PR #11](https://github.com/lavertia/playground/pull/11).
+**Scope:** only module-owned Pages are implemented; Filament-style Resources, Widgets registration and navigation remain planned for v0.3. Vite full-browser refresh on PHP and Laravel Modular edits is now **merged** in [Playground PR #11](https://github.com/lavertia/playground/pull/11).
 
 ## Development milestone status
 
