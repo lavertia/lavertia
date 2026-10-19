@@ -11,9 +11,9 @@ Lavertia is a PHP-first composable UI framework inspired by Flutter's Widget com
 | Repository | Responsibility | Current state |
 | --- | --- | --- |
 | [support](https://github.com/lavertia/support) | PHP component contracts, immutable composition, safe JSON serialization | **Merged to main**; PHP 8.3/8.4 CI green |
-| [panels](https://github.com/lavertia/panels) | Panel/Page routing, Laravel Modular page discovery, Inertia and React/Vue/Svelte adapters | v0.1/v0.2 implementation and [modular discovery #9](https://github.com/lavertia/panels/pull/9) plus [route precedence fix #10](https://github.com/lavertia/panels/pull/10) **merged**; CI green |
-| [playground](https://github.com/lavertia/playground) | Real Laravel 13 React/Vue/Svelte applications | v0.2 [PR #9](https://github.com/lavertia/playground/pull/9) **merged**; three-stack Laravel/Pest, TypeScript, PostgreSQL and builds green. PHP auto-refresh [PR #11](https://github.com/lavertia/playground/pull/11) **merged** |
-| [lavertia-doc](https://github.com/lavertia/lavertia-doc) | Documentation, guides, blog, plugin directory | Site merged to main and deployed through GitHub Pages |
+| [panels](https://github.com/lavertia/panels) | Panel/Page routing, Laravel Modular discovery, Navigation Registry, Dashboard Widgets and three Inertia adapters | [v0.3 Navigation/Widgets #11](https://github.com/lavertia/panels/pull/11) **merged**; PHP, real Modular, route cache and three installed-adapter builds green |
+| [playground](https://github.com/lavertia/playground) | Real Laravel 13 React/Vue/Svelte applications | v0.2 [PR #9](https://github.com/lavertia/playground/pull/9), PHP auto-refresh [#11](https://github.com/lavertia/playground/pull/11) and [v0.3 showcase #12](https://github.com/lavertia/playground/pull/12) **merged**; SQLite/PostgreSQL, Inertia, TS/build green |
+| [lavertia-doc](https://github.com/lavertia/lavertia-doc) | Documentation, guides, blog, plugin directory | [v0.3 Modular Panels guide](https://lavertia.github.io/lavertia-doc/guides/modular-panels/) merged with Astro CI; source alpha status corrected |
 | [forms](https://github.com/lavertia/forms) | Canonical form components | [PR #2](https://github.com/lavertia/forms/pull/2) **merged**; canonical descriptors available in source |
 | [tables](https://github.com/lavertia/tables) | Canonical table engine | [PR #2](https://github.com/lavertia/tables/pull/2) **merged**; scoped pagination/filtering available in source |
 | [actions](https://github.com/lavertia/actions) | Standalone action system (future extraction) | Reserved, not implemented |
@@ -72,7 +72,7 @@ public function boot(\Lavertia\Panels\PanelRegistry $panels): void
 
 The same Inertia renderer displays module Pages in React, Vue or Svelte. The implementation preserves Panel middleware and route precedence even when module providers boot in different orders. Both ordinary and cached routes were verified using a **real Laravel 13 + InterNACHI/modular** installation ([CI proof](https://github.com/lavertia/panels/actions/runs/39191330039)). See the [integration guide](https://github.com/lavertia/panels/blob/main/docs/MODULAR_LARAVEL.md).
 
-**Scope:** only module-owned Pages are implemented; Filament-style Resources, Widgets registration and navigation remain planned for v0.3. Vite full-browser refresh on PHP and Laravel Modular edits is now **merged** in [Playground PR #11](https://github.com/lavertia/playground/pull/11).
+**v0.3 alpha:** module-owned Pages, per-Panel Navigation (Laravel Gate checks, groups and active links), Dashboard Widgets and optional widget discovery are **implemented** and verified in [Panels PR #11](https://github.com/lavertia/panels/pull/11). React/Vue/Svelte display navigation and demo Widgets in [Playground PR #12](https://github.com/lavertia/playground/pull/12). Filament-style Resources/Relation Managers and standalone Panel authentication remain planned. Vite full-browser refresh on PHP and module edits was merged in [Playground PR #11](https://github.com/lavertia/playground/pull/11).
 
 ## Development milestone status
 
@@ -80,7 +80,7 @@ The same Inertia renderer displays module Pages in React, Vue or Svelte. The imp
 | --- | --- | --- |
 | **0.1 - foundation** | Support protocol, Panel/Page registry, installer and three renderers **merged**, with Laravel runtime CI | Approved compatibility/installation policy, version tags and release signoff |
 | **0.2 - Tables/Forms/i18n** | Canonical Forms/Tables, scoped Eloquent pagination, filters, locale/RTL and guarded form persistence **merged**; three-stack CI/SQLite/PostgreSQL green | Browser E2E, a11y, mobile/RTL manual QA, stable tag and compatibility signoff |
-| **0.3 - Panels / modularity** | Composer-backed Laravel Modular **Page discovery** merged and verified against a real Laravel 13 module and route cache | Navigation registry, Panel auth and Resource/Relation Manager abstractions not implemented |
+| **0.3 - Panels / modularity** | Composer-backed Page/Widget discovery, per-Panel Navigation and Dashboard Widgets **merged and tested**; real Laravel 13/Modular cache and three-stack UI builds green | Filament-style Resources, Relation Managers, standalone Panel auth and browser accessibility release QA |
 | **1.0 - stable** | Not released | Versioned backwards-compatibility, audited security, documented upgrade policy |
 
 The current backend and adapter source uses temporary **Composer path repositories**. Do not expect a public `composer require lavertia/panels` installation to work until packages are tagged and published.
